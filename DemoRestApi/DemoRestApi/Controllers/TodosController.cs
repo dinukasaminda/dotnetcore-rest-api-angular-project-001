@@ -3,35 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
-using DemoRestApi.Models;
 using DemoRestApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace DemoRestApi.Controllers
 {
     [Route("api/[controller]")]
     public class TodosController : Controller
     {
-        private TodoService _todoService;
+        private readonly ITodoRepository _todoRepository;
 
-        public TodosController() {
-            _todoService = new TodoService();
+        public TodosController(ITodoRepository repository) {
+            _todoRepository = repository;
         }
         
         // GET: api/values
         [HttpGet()]
         public IActionResult GetTodos([FromQuery(Name ="id")] int? id) {
 
-            var myTodos = new List<Todo>();
-            if (id is not null) {
-                myTodos = _todoService.AllTodos().Where(t => t.Id == id).ToList();
+            var myTodos = _todoRepository.AllTodos();
+            var myTodos2 = _todoRepository.AllTodos();
 
+            if (id is not null) {
+               return Ok(myTodos.Where(t => t.Id == id).ToList());
             } else {
-                myTodos = _todoService.AllTodos();
+                return Ok(myTodos);
             }
-            return Ok(myTodos);
+           
         }
 
         //// GET api/values/5

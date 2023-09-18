@@ -3,11 +3,11 @@ using DemoRestApi.Models;
 
 namespace DemoRestApi.Services
 {
-	public class TodoService
+	public class TodoService : ITodoRepository
 	{
 		public TodoService()
 		{
-
+            System.Console.WriteLine("Starting new Instance of TodoService");
 		}
         public List<Todo> AllTodos() {
             var todos = new List<Todo>();
