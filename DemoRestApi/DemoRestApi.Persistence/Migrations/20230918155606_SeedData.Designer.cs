@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoRestApi.Persistence.Migrations
 {
     [DbContext(typeof(TodoDBContext))]
-    [Migration("20230918152131_Initial")]
-    partial class Initial
+    [Migration("20230918155606_SeedData")]
+    partial class SeedData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,18 @@ namespace DemoRestApi.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("todo");
+                    b.ToTable("todos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2023, 9, 18, 21, 26, 6, 940, DateTimeKind.Local).AddTicks(8710),
+                            Description = "sample 2",
+                            Due = new DateTime(2023, 9, 20, 21, 26, 6, 940, DateTimeKind.Local).AddTicks(8740),
+                            Status = 1,
+                            Title = "Collect letters"
+                        });
                 });
 #pragma warning restore 612, 618
         }

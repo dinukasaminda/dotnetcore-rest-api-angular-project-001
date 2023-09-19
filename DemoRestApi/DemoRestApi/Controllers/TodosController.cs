@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
-using DemoRestApi.Services;
+using DemoRestApi.Services.Todos;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace DemoRestApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/todos")]
     public class TodosController : Controller
     {
         private readonly ITodoRepository _todoRepository;

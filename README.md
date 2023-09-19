@@ -2,6 +2,8 @@
 
 DotNet core web api with angular frontend , ecommerce application
 
+Swagger Link : https://localhost:7196/swagger/index.html
+
 ## Layered Architecture
 
 Layerd Projets, Seperation of concern , seperating Controllers,Models, Services
@@ -54,10 +56,16 @@ Link : https://azure.microsoft.com/en-us/products/data-studio
 dotnet tool install --global dotnet-ef
 ```
 
-## Run Migrations:
+## DB Migrations [Code First]:
 
 ```
  Create Migration:   dotnet ef migrations add Initial --project DemoRestApi.Persistence
  Run Migration:   dotnet ef database update --project DemoRestApi.Persistence
 
+```
+
+## SQL Connection String:
+
+```
+var connectionString = "Server=localhost,1433; Database=MyTodoDb; User=sa; Password=tSDIN-TD_12556;TrustServerCertificate=True";
 ```

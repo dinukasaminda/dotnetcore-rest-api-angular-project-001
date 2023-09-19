@@ -17,4 +17,10 @@
   <ItemGroup>
     <ProjectReference Include="..\DemoRestApi.Models\DemoRestApi.Models.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Migrations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
 </Project>

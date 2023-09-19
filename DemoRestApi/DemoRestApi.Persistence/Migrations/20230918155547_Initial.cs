@@ -12,7 +12,7 @@ namespace DemoRestApi.Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "todo",
+                name: "todos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -25,7 +25,7 @@ namespace DemoRestApi.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_todo", x => x.Id);
+                    table.PrimaryKey("PK_todos", x => x.Id);
                 });
         }
 
@@ -33,7 +33,7 @@ namespace DemoRestApi.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "todo");
+                name: "todos");
         }
     }
 }

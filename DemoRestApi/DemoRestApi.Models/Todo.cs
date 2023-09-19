@@ -13,6 +13,9 @@ namespace DemoRestApi.Models
 
 		public TodoStatus Status { get; set; } // New , Inprogress , Completed
 
+		public int AuthorId { get; set; }
+		public Author Author { get; set; }
+
 		public Todo()
 		{
 
