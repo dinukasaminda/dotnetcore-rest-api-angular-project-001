@@ -1,0 +1,15 @@
+# https://hub.docker.com/_/microsoft-mssql-server
+#docker pull mcr.microsoft.com/mssql/server
+# write docker-compose.yaml for sql server
+version: "3"
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server
+    container_name: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password123
+    ports:
+      - 1433:1433
+    volumes:
+      - ./data:/var/opt/mssql/data
