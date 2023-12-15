@@ -26,14 +26,13 @@ namespace PointOfSaleSystemAPI.Controllers
 
         // Get a product by id
         [HttpGet("{id}")]
-        public IActionResult GetProductById(string id)
+        public IActionResult GetProductById(Int64 id)
         {
-            if (id == null)
+            if (id < 1)
             {
                 return BadRequest();
             }
-            var products = _productService.AllProduts();
-            var product = products.Find(p => p.Id == int.Parse(id));
+            var product = _productService.GetProductById(id);
             if (product == null)
             {
                 return NotFound();

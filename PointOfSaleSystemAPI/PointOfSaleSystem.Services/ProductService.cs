@@ -1,32 +1,21 @@
-﻿using PointOfSaleSystem.Services;
+﻿using PointOfSaleDataAccess;
 using PointOfSaleSystemAPI.Models;
+using System.Linq;
 
-namespace PointOfSaleSystemAPI.Services
+namespace PointOfSaleSystem.Services
 {
-    public class ProductService: IProductRepository
-    { 
-          // list all products
-        public List<ProductEntity> AllProduts()
+    public class ProductService : IProductRepository
     {
-        var products = new List<ProductEntity>();
-        products.Add(new ProductEntity
+        private readonly POSDBContext _context = new();
+        public List<ProductEntity> AllProduts()
         {
-            Id = 1,
-            Name = "product1",
-            BarcodePrefix = "1001",
-            CreatedDate = DateTime.Now,
-            UpdatedDate = DateTime.Now
-        });
-        products.Add(new ProductEntity
-        {
-            Id = 2,
-            Name = "product2",
-            BarcodePrefix = "1002",
-            CreatedDate = DateTime.Now,
-            UpdatedDate = DateTime.Now
-        });
-        return products;
-    }
+            return _context.Products.ToList();
+        }
 
+        public ProductEntity GetProductById(Int64 id)
+        {
+            var product = _context.Products.Where(p => p.Id == id).FirstOrDefault();
+            return product;
+        }
     }
 }
