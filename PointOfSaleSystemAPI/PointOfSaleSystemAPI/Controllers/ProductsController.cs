@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using PointOfSaleSystem.Services;
+using PointOfSaleSystemAPI.Services;
 
 namespace PointOfSaleSystemAPI.Controllers
 {
@@ -8,14 +9,37 @@ namespace PointOfSaleSystemAPI.Controllers
     public class ProductsController : ControllerBase
     {
 
+        private IProductRepository _productService;
+
+        public ProductsController(IProductRepository productService)
+        {
+            _productService = productService;
+        }
 
         // Get all products
         [HttpGet] 
         public IActionResult GetProducts()
         {
-            var products = new string[] { "product1", "product2" };
+            var products =  _productService.AllProduts();
             return Ok(products);
         }
+
+        // Get a product by id
+        [HttpGet("{id}")]
+        public IActionResult GetProductById(string id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            var products = _productService.AllProduts();
+            var product = products.Find(p => p.Id == int.Parse(id));
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+        }   
 
         // Create a product
         [HttpPost]
@@ -42,6 +66,10 @@ namespace PointOfSaleSystemAPI.Controllers
             }
             return Ok();
         }
+
+
+
+      
     }
 
 }

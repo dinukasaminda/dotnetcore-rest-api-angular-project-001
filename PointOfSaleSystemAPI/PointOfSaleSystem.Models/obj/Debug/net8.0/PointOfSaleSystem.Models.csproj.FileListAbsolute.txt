@@ -1,0 +1,12 @@
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\bin\Debug\net8.0\PointOfSaleSystem.Models.deps.json
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\bin\Debug\net8.0\PointOfSaleSystem.Models.dll
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\bin\Debug\net8.0\PointOfSaleSystem.Models.pdb
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\obj\Debug\net8.0\PointOfSaleSystem.Models.GeneratedMSBuildEditorConfig.editorconfig
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\obj\Debug\net8.0\PointOfSaleSystem.Models.AssemblyInfoInputs.cache
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\obj\Debug\net8.0\PointOfSaleSystem.Models.AssemblyInfo.cs
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\obj\Debug\net8.0\PointOfSaleSystem.Models.csproj.CoreCompileInputs.cache
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\obj\Debug\net8.0\PointOfSaleSystem.Models.sourcelink.json
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\obj\Debug\net8.0\PointOfSaleSystem.Models.dll
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\obj\Debug\net8.0\refint\PointOfSaleSystem.Models.dll
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\obj\Debug\net8.0\PointOfSaleSystem.Models.pdb
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystem.Models\obj\Debug\net8.0\ref\PointOfSaleSystem.Models.dll

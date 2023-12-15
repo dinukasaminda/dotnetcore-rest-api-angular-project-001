@@ -1,11 +1,28 @@
+using PointOfSaleSystem.Services;
+using PointOfSaleSystemAPI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+// Inject services
+
+
+// only one instance of the service is created and shared per application lifetime
+//builder.Services.AddSingleton<IProductRepository, ProductService>();
+
+// a new instance of the service is created each reaquests
+builder.Services.AddScoped<IProductRepository, ProductService>();
+
+// a new instance of the service is created every time it's requested
+//builder.Services.AddTransient<IProductRepository, ProductService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

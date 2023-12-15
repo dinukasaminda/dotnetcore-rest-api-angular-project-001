@@ -31,3 +31,7 @@ E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\Poi
 E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\obj\Debug\net8.0\PointOfSaleSystemAPI.pdb
 E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\obj\Debug\net8.0\PointOfSaleSystemAPI.genruntimeconfig.cache
 E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\obj\Debug\net8.0\ref\PointOfSaleSystemAPI.dll
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\bin\Debug\net8.0\PointOfSaleSystem.Models.dll
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\bin\Debug\net8.0\PointOfSaleSystem.Services.dll
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\bin\Debug\net8.0\PointOfSaleSystem.Services.pdb
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\bin\Debug\net8.0\PointOfSaleSystem.Models.pdb
