@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PointOfSaleDataAccess\PointOfSaleDataAccess.csproj" />
     <ProjectReference Include="..\PointOfSaleSystem.Models\PointOfSaleSystem.Models.csproj" />
   </ItemGroup>
 
