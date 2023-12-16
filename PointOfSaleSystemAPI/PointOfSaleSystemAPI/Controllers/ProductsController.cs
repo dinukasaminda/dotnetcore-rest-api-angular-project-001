@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PointOfSaleSystem.Services;
-using PointOfSaleSystemAPI.Services;
+using PointOfSaleSystem.Services.Products;
 
 namespace PointOfSaleSystemAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/products")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
@@ -26,7 +25,7 @@ namespace PointOfSaleSystemAPI.Controllers
 
         // Get a product by id
         [HttpGet("{id}")]
-        public IActionResult GetProductById(Int64 id)
+        public IActionResult GetProductById(long id)
         {
             if (id < 1)
             {

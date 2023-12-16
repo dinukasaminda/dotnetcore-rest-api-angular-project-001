@@ -1,5 +1,5 @@
-using PointOfSaleSystem.Services;
-using PointOfSaleSystemAPI.Services;
+using PointOfSaleSystem.Services.Products;
+using PointOfSaleSystem.Services.Stocks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,7 @@ builder.Services.AddControllers();
 
 // a new instance of the service is created each reaquests
 builder.Services.AddScoped<IProductRepository, ProductService>();
+builder.Services.AddScoped<IStockRepository, StockService>();
 
 // a new instance of the service is created every time it's requested
 //builder.Services.AddTransient<IProductRepository, ProductService>();

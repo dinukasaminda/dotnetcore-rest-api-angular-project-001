@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PointOfSaleDataAccess;
 
@@ -11,9 +12,11 @@ using PointOfSaleDataAccess;
 namespace PointOfSaleDataAccess.Migrations
 {
     [DbContext(typeof(POSDBContext))]
-    partial class POSDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231216034213_stockEntity")]
+    partial class stockEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +46,6 @@ namespace PointOfSaleDataAccess.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
                     b.Property<double>("UnitCost")
                         .HasColumnType("float");
 
@@ -66,73 +66,67 @@ namespace PointOfSaleDataAccess.Migrations
                         {
                             Id = 1L,
                             BarcodePrefix = "X1",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9309),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2241),
                             ProductId = 1L,
                             Quantity = 10,
-                            Type = 0,
                             UnitCost = 123.34,
                             UnitPrice = 125.34,
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9311)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2242)
                         },
                         new
                         {
                             Id = 2L,
                             BarcodePrefix = "X2",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9314),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2245),
                             ProductId = 2L,
                             Quantity = 10,
-                            Type = 0,
                             UnitCost = 12.09,
                             UnitPrice = 14.09,
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9315)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2245)
                         },
                         new
                         {
                             Id = 3L,
                             BarcodePrefix = "X3",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9317),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2247),
                             ProductId = 3L,
                             Quantity = 100,
-                            Type = 0,
                             UnitCost = 2.0,
                             UnitPrice = 4.0,
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9317)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2248)
                         },
                         new
                         {
                             Id = 4L,
                             BarcodePrefix = "X4",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9319),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2249),
                             ProductId = 4L,
                             Quantity = 1000,
-                            Type = 0,
                             UnitCost = 500.0,
                             UnitPrice = 600.0,
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9319)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2250)
                         },
                         new
                         {
                             Id = 5L,
                             BarcodePrefix = "X5",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9321),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2251),
                             ProductId = 5L,
                             Quantity = 5,
-                            Type = 0,
                             UnitCost = 124.0,
                             UnitPrice = 126.0,
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9321)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2252)
                         },
                         new
                         {
                             Id = 6L,
                             BarcodePrefix = "X11",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9323),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2253),
                             ProductId = 1L,
                             Quantity = 35,
-                            Type = 0,
                             UnitCost = 126.34,
                             UnitPrice = 128.34,
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9324)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2254)
                         });
                 });
 
@@ -167,41 +161,41 @@ namespace PointOfSaleDataAccess.Migrations
                         {
                             Id = 1L,
                             BarcodePrefix = "1001",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9148),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2078),
                             Name = "Product 1",
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9160)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2088)
                         },
                         new
                         {
                             Id = 2L,
                             BarcodePrefix = "1002",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9162),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2090),
                             Name = "Product 2",
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9163)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2091)
                         },
                         new
                         {
                             Id = 3L,
                             BarcodePrefix = "1003",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9165),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2092),
                             Name = "Product 3",
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9165)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2093)
                         },
                         new
                         {
                             Id = 4L,
                             BarcodePrefix = "1004",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9166),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2094),
                             Name = "Product 4",
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9167)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2095)
                         },
                         new
                         {
                             Id = 5L,
                             BarcodePrefix = "1005",
-                            CreatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9168),
+                            CreatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2096),
                             Name = "Product 5",
-                            UpdatedDate = new DateTime(2023, 12, 16, 10, 3, 40, 932, DateTimeKind.Local).AddTicks(9168)
+                            UpdatedDate = new DateTime(2023, 12, 16, 9, 12, 13, 132, DateTimeKind.Local).AddTicks(2097)
                         });
                 });
 

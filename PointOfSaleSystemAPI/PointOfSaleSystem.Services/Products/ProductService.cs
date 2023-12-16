@@ -1,8 +1,7 @@
 ﻿using PointOfSaleDataAccess;
-using PointOfSaleSystemAPI.Models;
-using System.Linq;
+using PointOfSaleSystem.Models.Product;
 
-namespace PointOfSaleSystem.Services
+namespace PointOfSaleSystem.Services.Products
 {
     public class ProductService : IProductRepository
     {
@@ -12,7 +11,7 @@ namespace PointOfSaleSystem.Services
             return _context.Products.ToList();
         }
 
-        public ProductEntity GetProductById(Int64 id)
+        public ProductEntity GetProductById(long id)
         {
             var product = _context.Products.Where(p => p.Id == id).FirstOrDefault();
             return product;
