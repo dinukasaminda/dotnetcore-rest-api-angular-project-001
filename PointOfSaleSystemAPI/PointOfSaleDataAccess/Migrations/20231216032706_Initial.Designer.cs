@@ -12,8 +12,8 @@ using PointOfSaleDataAccess;
 namespace PointOfSaleDataAccess.Migrations
 {
     [DbContext(typeof(POSDBContext))]
-    [Migration("20231215150459_seedProductDatav1")]
-    partial class seedProductDatav1
+    [Migration("20231216032706_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,41 +56,41 @@ namespace PointOfSaleDataAccess.Migrations
                         {
                             Id = 1L,
                             BarcodePrefix = "1001",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6239),
                             Name = "Product 1",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6249)
                         },
                         new
                         {
                             Id = 2L,
                             BarcodePrefix = "1002",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6251),
                             Name = "Product 2",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6251)
                         },
                         new
                         {
                             Id = 3L,
                             BarcodePrefix = "1003",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6253),
                             Name = "Product 3",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6253)
                         },
                         new
                         {
                             Id = 4L,
                             BarcodePrefix = "1004",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6255),
                             Name = "Product 4",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6255)
                         },
                         new
                         {
                             Id = 5L,
                             BarcodePrefix = "1005",
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6256),
                             Name = "Product 5",
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            UpdatedDate = new DateTime(2023, 12, 16, 8, 57, 6, 326, DateTimeKind.Local).AddTicks(6257)
                         });
                 });
 #pragma warning restore 612, 618

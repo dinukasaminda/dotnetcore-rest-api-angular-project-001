@@ -1,32 +1,43 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PointOfSaleSystem.Services;
-using PointOfSaleSystemAPI.Services;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using PointOfSaleSystem.Models.Product;
+using PointOfSaleSystem.Services.Models;
+using PointOfSaleSystem.Services.Products;
 
 namespace PointOfSaleSystemAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/products")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
 
-        private IProductRepository _productService;
+        private readonly IProductRepository _productService;
+        private readonly IMapper _mapper;
 
-        public ProductsController(IProductRepository productService)
+
+        
+        public ProductsController(IProductRepository productService,IMapper mapper)
         {
             _productService = productService;
+            _mapper = mapper;
         }
+
 
         // Get all products
         [HttpGet] 
-        public IActionResult GetProducts()
+        public ActionResult<ICollection<ProductDto>> GetProducts([FromQuery(Name = "search")] string? search)
         {
-            var products =  _productService.AllProduts();
-            return Ok(products);
+
+            var products =  _productService.AllProduts(search);
+
+            var mappedProducts = _mapper.Map<ICollection<ProductDto>>(products);
+
+            return Ok(mappedProducts);
         }
 
         // Get a product by id
         [HttpGet("{id}")]
-        public IActionResult GetProductById(Int64 id)
+        public ActionResult<ProductDto> GetProductById(long id)
         {
             if (id < 1)
             {
@@ -37,14 +48,26 @@ namespace PointOfSaleSystemAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(product);
+            var mappedProduct = _mapper.Map<ProductDto>(product);
+
+            return Ok(mappedProduct);
         }   
 
         // Create a product
         [HttpPost]
-        public IActionResult CreateProduct()
+        public ActionResult<ProductDto> CreateProduct(CreateProductDto product)
         {
-            return Ok();
+            if (product == null)
+            {
+                return BadRequest();
+            }
+            var productEntity = _mapper.Map<ProductEntity>(product);
+            var newProduct = _productService.CreateProduct(productEntity);
+
+            var mappedProduct = _mapper.Map<ProductDto>(newProduct);
+
+
+            return Ok(mappedProduct);
         }
 
         // Update a product
@@ -65,10 +88,5 @@ namespace PointOfSaleSystemAPI.Controllers
             }
             return Ok();
         }
-
-
-
-      
     }
-
 }

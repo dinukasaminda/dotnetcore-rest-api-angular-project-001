@@ -1,1 +1,4 @@
-pos-dotnet-c#/data/*
+pos-docker/data/*
+
+PointOfSaleSystemAPI/PointOfSaleSystemAPI/bin/*
+PointOfSaleSystemAPI/PointOfSaleSystemAPI/obj/*
