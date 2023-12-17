@@ -2,7 +2,7 @@
  
 
 create migration
-dotnet ef migrations add Initial --project .\PointOfSaleDataAccess 
+dotnet ef migrations add InvoiceModel --project .\PointOfSaleDataAccess 
 
 run migration
 dotnet ef database update  --project .\PointOfSaleDataAccess

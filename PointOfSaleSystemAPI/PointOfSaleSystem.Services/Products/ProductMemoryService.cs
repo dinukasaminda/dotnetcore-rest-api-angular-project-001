@@ -1,4 +1,5 @@
 ﻿using PointOfSaleSystem.Models.Product;
+using PointOfSaleSystem.Services.Models;
 
 namespace PointOfSaleSystem.Services.Products
 {
@@ -27,6 +28,20 @@ namespace PointOfSaleSystem.Services.Products
             return products;
         }
 
+        public List<ProductEntity> AllProduts(string? search)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ProductEntity CreateProduct(CreateProductDto newProduct)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ProductEntity CreateProduct(ProductEntity newProduct)
+        {
+            throw new NotImplementedException();
+        }
 
         public ProductEntity GetProductById(long id)
         {

@@ -1,4 +1,5 @@
 ﻿using PointOfSaleSystem.Models.Stock;
+using PointOfSaleSystem.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace PointOfSaleSystem.Services.Stocks
         public List<StockEntity> GetAllStocks();
 
         // calculate average price stock entity
-        public StockEntity CalculatedVertualStockForAvgPrice(long productId);
+        public ProductVirtualPriceCalDto CalculateProductWAvgPrice(long productId,double profitMarginPercentage);
        
 
         // add stock

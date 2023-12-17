@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PointOfSaleSystem.Services.Models;
 using PointOfSaleSystem.Services.Stocks;
 
 namespace PointOfSaleSystemAPI.Controllers
@@ -47,15 +48,15 @@ namespace PointOfSaleSystemAPI.Controllers
             return Ok(stock);
         }
 
-        /// get stock by id
-        [HttpGet("stock/avg/{productId}")]
-        public IActionResult CalProductAvgPrice(int productId)
+        /// Calculate profit margin per product using weighted average cost
+        [HttpGet("stock/avg")]
+        public ActionResult<ProductVirtualPriceCalDto> CalProductAvgPrice([FromQuery] int productId, [FromQuery]  double profitPercentage)
         {
-            if (productId <= 0)
+            if (productId <= 0 || profitPercentage<0)
             {
                 return BadRequest();
             }
-            var stock = _stockService.CalculatedVertualStockForAvgPrice(productId);
+            var stock = _stockService.CalculateProductWAvgPrice(productId, profitPercentage);
             if (stock == null)
             {
                 return NotFound();

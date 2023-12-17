@@ -2,8 +2,7 @@
 {
     public enum StockType
     {
-        RealStock,
-        VirtualStock,
-
+        StockIn,
+        StockOut,
     }
 }

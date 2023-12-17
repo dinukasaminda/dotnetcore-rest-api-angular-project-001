@@ -75,3 +75,5 @@ E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\Poi
 E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\bin\Debug\net8.0\PointOfSaleDataAccess.dll
 E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\bin\Debug\net8.0\PointOfSaleDataAccess.pdb
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\bin\Debug\net8.0\AutoMapper.dll
+E:\repositories\dotnetcore-rest-api-angular-project-001\PointOfSaleSystemAPI\PointOfSaleSystemAPI\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

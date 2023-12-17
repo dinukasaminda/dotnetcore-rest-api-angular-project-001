@@ -1,14 +1,28 @@
+using Microsoft.AspNetCore.Mvc;
 using PointOfSaleSystem.Services.Products;
 using PointOfSaleSystem.Services.Stocks;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new ProducesAttribute("application/json", "text/plain", "text/json"));
+});
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.ReturnHttpNotAcceptable = true;
+
+});
+    // to support xml format
+    //.AddXmlDataContractSerializerFormatters();
+
+// Add AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 
 // Inject services
-
 
 // only one instance of the service is created and shared per application lifetime
 //builder.Services.AddSingleton<IProductRepository, ProductService>();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PointOfSaleSystem.Models.Invoice;
 using PointOfSaleSystem.Models.Product;
 using PointOfSaleSystem.Models.Stock;
 
@@ -8,6 +9,8 @@ namespace PointOfSaleDataAccess
     {
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<StockEntity> Stocks { get; set; }
+
+        public DbSet<InvoiceEntity> Invoices { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -71,7 +74,7 @@ namespace PointOfSaleDataAccess
                         UnitCost = 123.34,
                         UnitPrice = 125.34,
                         BarcodePrefix = "X1",
-                        Type = StockType.RealStock,
+                        Type = StockType.StockIn,
                         CreatedDate = System.DateTime.Now,
                         UpdatedDate = System.DateTime.Now
                     },
@@ -84,7 +87,7 @@ namespace PointOfSaleDataAccess
                         UnitCost = 12.09,
                         UnitPrice = 14.09,
                         BarcodePrefix = "X2",
-                        Type = StockType.RealStock,
+                        Type = StockType.StockIn,
                         CreatedDate = System.DateTime.Now,
                         UpdatedDate = System.DateTime.Now
                     },
@@ -96,7 +99,7 @@ namespace PointOfSaleDataAccess
                         UnitCost = 2.00,
                         UnitPrice = 4.00,
                         BarcodePrefix = "X3",
-                        Type = StockType.RealStock,
+                        Type = StockType.StockIn,
                         CreatedDate = System.DateTime.Now,
                         UpdatedDate = System.DateTime.Now
                     },
@@ -108,7 +111,7 @@ namespace PointOfSaleDataAccess
                         UnitCost = 500.00,
                         UnitPrice = 600.00,
                         BarcodePrefix = "X4",
-                        Type = StockType.RealStock,
+                        Type = StockType.StockIn,
                         CreatedDate = System.DateTime.Now,
                         UpdatedDate = System.DateTime.Now
                     },
@@ -120,7 +123,7 @@ namespace PointOfSaleDataAccess
                         UnitCost = 124.00,
                         UnitPrice = 126.00,
                         BarcodePrefix = "X5",
-                        Type = StockType.RealStock,
+                        Type = StockType.StockIn,
                         CreatedDate = System.DateTime.Now,
                         UpdatedDate = System.DateTime.Now
                     },
@@ -132,11 +135,14 @@ namespace PointOfSaleDataAccess
                          UnitCost = 126.34,
                          UnitPrice = 128.34,
                          BarcodePrefix = "X11",
-                         Type = StockType.RealStock,
+                         Type = StockType.StockIn,
                          CreatedDate = System.DateTime.Now,
                          UpdatedDate = System.DateTime.Now
                      }
                 );
+
+            modelBuilder.Entity<InvoiceEntity>();
+
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PointOfSaleDataAccess;
 using PointOfSaleSystem.Models.Stock;
+using PointOfSaleSystem.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,34 +32,59 @@ namespace PointOfSaleSystem.Services.Stocks
             return stocks;
         }
 
-        public StockEntity CalculatedVertualStockForAvgPrice(long productId)
+        public ProductVirtualPriceCalDto CalculateProductWAvgPrice(long productId, double profitMarginPercentage)
         {
-            var stocks = _context.Stocks.Where(s => s.ProductId == productId).ToList();
-            var stockEntity = new StockEntity
-                {
-                    ProductId = productId,
-                    Quantity = 0,
-                    UnitCost = 0,
-                    UnitPrice = 0,
-                    Type = StockType.VirtualStock,
-                    BarcodePrefix = "VIRTUAL",
-                    CreatedDate = DateTime.Now,
-                    UpdatedDate = DateTime.Now
-                };
-            double totalItems= 0;
-            double totalCost = 0;
-            double totalUnitPrice = 0;  
-            stocks.ForEach(s =>
-            {
-                totalCost += s.UnitCost * s.Quantity;
-                totalUnitPrice += s.UnitPrice * s.Quantity;
-                totalItems += s.Quantity;
 
-            });
-            stockEntity.Quantity = (int)totalItems;
-            stockEntity.UnitCost = totalCost / totalItems;
-            stockEntity.UnitPrice = totalUnitPrice / totalItems;
-                return stockEntity;
+            var result = new ProductVirtualPriceCalDto();
+            var stocks = _context.Stocks.Where(s => s.ProductId == productId && s.Type==StockType.StockIn).ToList();
+
+
+            var totalCost = 0.0;
+            var itemCount = 0;
+
+
+            foreach (var stock in stocks)
+            {
+                totalCost += stock.UnitCost * stock.Quantity;
+                itemCount += stock.Quantity;
+            }
+
+            // round to 2 decimal places
+            totalCost = Math.Round(totalCost, 2);
+
+
+            var weightedAvgCost = totalCost / itemCount;
+            weightedAvgCost = Math.Round(weightedAvgCost, 2);
+
+
+            // if we sold all items by avg cost price we should get allCost
+
+
+
+            var vertualUnitPrice = totalCost * (100 + profitMarginPercentage) / (100 * itemCount);
+            vertualUnitPrice = Math.Round(vertualUnitPrice, 2);
+
+            var totalProfit = vertualUnitPrice * itemCount - totalCost;
+            totalProfit = Math.Round(totalProfit, 2);
+
+            var unitProfit = totalProfit / itemCount;
+
+
+            var profitPercentage = (totalProfit / totalCost) * 100;
+            profitPercentage = Math.Round(profitPercentage, 2);
+
+            result.ProductId = productId;
+            result.TotalCost = totalCost;
+            result.ItemCount = itemCount;
+            result.WeightedAvgCost = weightedAvgCost;
+            result.UnitPrice = vertualUnitPrice;
+
+            result.ProfitMarginPercentage = profitPercentage;
+            result.TotalProfit = totalProfit;
+            result.UnitProfit = unitProfit;
+
+            return result;
+
         }
     }
 }
