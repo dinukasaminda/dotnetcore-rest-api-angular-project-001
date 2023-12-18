@@ -12,19 +12,20 @@ namespace PointOfSaleSystem.Services.Stocks
     {
 
         // get stock by id
-        public StockEntity GetStockById(long id);
+        public Stock GetStockById(long id);
 
         // get all stocks by product id
-        public List<StockEntity> GetStocksByProductId(long productId);
+        public List<Stock> GetStocksByProductId(long productId);
 
         // get all stocks 
-        public List<StockEntity> GetAllStocks();
+        public List<Stock> GetAllStocks();
 
         // calculate average price stock entity
         public ProductVirtualPriceCalDto CalculateProductWAvgPrice(long productId,double profitMarginPercentage);
-       
 
-        // add stock
+
+        // add stocks
+        public List<Stock> AddStock(List<Stock> stockEntitis);
 
         // update stock
 

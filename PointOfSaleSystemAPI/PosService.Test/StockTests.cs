@@ -76,40 +76,53 @@ namespace PosService.Test
         [Fact]
         public void createInvoiceAndAddStocks()
         {
+           
+
+            var stockService = new StockService();
+
+            var stocks = new List<Stock> {
+                new Stock
+                {
+                    ProductId=1,
+                    Quantity=333,
+                    UnitCost=10.0,
+                    Type=StockType.StockIn,
+                    CreatedDate=DateTime.Now,
+                    ActionType=StockActionType.PurchaseByInvoice,
+                },
+                new Stock
+                {
+                    ProductId=2,
+                    Quantity=444,
+                    UnitCost=15.0,
+                    Type=StockType.StockIn,
+                    CreatedDate=DateTime.Now,
+                     ActionType=StockActionType.PurchaseByInvoice,
+                }
+            };
+            stocks= stockService.AddStock(stocks);
+
+
             var invoiceService = new InvoiceService();
-            var invoice = new InvoiceEntity
+
+            var barCodePrefix = "3005";
+            var invoice = new Invoice
             {
                 ComapnyName = "Test Company",
                 InvoiceDate = DateTime.Now,
                 Note = "Test Notes",
                 TotalItemCost = 100.0,
                 OtherCost = 10.0,
-                StockItems = new List<StockEntity> {
-                new StockEntity
+                StockBarcodePrefix = barCodePrefix,
+                InvoiceStocks= stocks.Select(s=>new InvoiceStock
                 {
-                    ProductId=1,
-                    Quantity=333,
-                    UnitCost=10.0,
-                    BarcodePrefix="3001",
-                    Type=StockType.StockIn,
-                    CreatedDate=DateTime.Now,
-                    UpdatedDate=DateTime.Now
-                },
-                new StockEntity
-                {
-                    ProductId=2,
-                    Quantity=444,
-                    UnitCost=15.0,
-                     BarcodePrefix="3002",
-                    Type=StockType.StockIn,
-                    CreatedDate=DateTime.Now,
-                    UpdatedDate=DateTime.Now
-                }
-                }
-
+                    StockId=s.Id,
+                }).ToList()
             };
             var result = invoiceService.CreateInvoice(invoice);
             Assert.NotNull(result);
+
+
         }
     }
 }

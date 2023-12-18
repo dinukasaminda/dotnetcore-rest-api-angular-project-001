@@ -1,14 +1,14 @@
-﻿using PointOfSaleSystem.Models.Product;
+﻿using PointOfSaleSystem.Models.Products;
 using PointOfSaleSystem.Services.Models;
 
 namespace PointOfSaleSystem.Services.Products
 {
     public interface IProductRepository
     {
-        List<ProductEntity> AllProduts(string? search);
+        List<Product> AllProduts(string? search);
 
-        ProductEntity GetProductById(long id);
+        Product GetProductById(long id);
 
-        ProductEntity CreateProduct(ProductEntity newProduct);
+        Product CreateProduct(Product newProduct);
     }
 }

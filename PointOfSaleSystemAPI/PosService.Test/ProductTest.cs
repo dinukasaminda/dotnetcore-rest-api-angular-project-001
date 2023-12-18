@@ -1,11 +1,5 @@
-﻿using PointOfSaleSystem.Models.Product;
-using PointOfSaleSystem.Services.Models;
+﻿using PointOfSaleSystem.Models.Products;
 using PointOfSaleSystem.Services.Products;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PosService.Test
 {
@@ -16,7 +10,7 @@ namespace PosService.Test
         public void CreateProductTest()
         {
            
-            var mappedproduct = new ProductEntity()
+            var mappedproduct = new Product()
             {
                 Name = "Test Product",
                 BarcodePrefix = "2001",

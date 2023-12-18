@@ -22,7 +22,7 @@ namespace PointOfSaleDataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PointOfSaleSystem.Models.Invoice.InvoiceEntity", b =>
+            modelBuilder.Entity("PointOfSaleSystem.Models.Invoice.Invoice", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,15 +46,23 @@ namespace PointOfSaleDataAccess.Migrations
                     b.Property<double>("OtherCost")
                         .HasColumnType("float");
 
+                    b.Property<string>("StockBarcodePrefix")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<double>("TotalItemCost")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("StockBarcodePrefix")
+                        .IsUnique();
+
                     b.ToTable("Invoices");
                 });
 
-            modelBuilder.Entity("PointOfSaleSystem.Models.Product.ProductEntity", b =>
+            modelBuilder.Entity("PointOfSaleSystem.Models.Products.Product", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,45 +95,58 @@ namespace PointOfSaleDataAccess.Migrations
                         {
                             Id = 1L,
                             BarcodePrefix = "1001",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5551),
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1897),
                             Name = "Product 1",
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5573)
+                            UpdatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1914)
                         },
                         new
                         {
                             Id = 2L,
                             BarcodePrefix = "1002",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5574),
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1916),
                             Name = "Product 2",
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5575)
+                            UpdatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1917)
                         },
                         new
                         {
                             Id = 3L,
                             BarcodePrefix = "1003",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5576),
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1918),
                             Name = "Product 3",
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5577)
+                            UpdatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1919)
                         },
                         new
                         {
                             Id = 4L,
                             BarcodePrefix = "1004",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5578),
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1920),
                             Name = "Product 4",
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5579)
+                            UpdatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1921)
                         },
                         new
                         {
                             Id = 5L,
                             BarcodePrefix = "1005",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5580),
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1922),
                             Name = "Product 5",
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5580)
+                            UpdatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(1923)
                         });
                 });
 
-            modelBuilder.Entity("PointOfSaleSystem.Models.Stock.StockEntity", b =>
+            modelBuilder.Entity("PointOfSaleSystem.Models.Stock.InvoiceStock", b =>
+                {
+                    b.Property<long>("InvoiceId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("StockId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("InvoiceId", "StockId");
+
+                    b.ToTable("InvoiceStocks");
+                });
+
+            modelBuilder.Entity("PointOfSaleSystem.Models.Stock.Stock", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -133,16 +154,11 @@ namespace PointOfSaleDataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("BarcodePrefix")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int>("ActionType")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<long?>("InvoiceEntityId")
-                        .HasColumnType("bigint");
 
                     b.Property<long>("ProductId")
                         .HasColumnType("bigint");
@@ -159,12 +175,7 @@ namespace PointOfSaleDataAccess.Migrations
                     b.Property<double>("UnitPrice")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("InvoiceEntityId");
 
                     b.HasIndex("ProductId");
 
@@ -174,98 +185,97 @@ namespace PointOfSaleDataAccess.Migrations
                         new
                         {
                             Id = 1L,
-                            BarcodePrefix = "X1",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5745),
+                            ActionType = 0,
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(2066),
                             ProductId = 1L,
                             Quantity = 10,
                             Type = 0,
                             UnitCost = 123.34,
-                            UnitPrice = 125.34,
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5745)
+                            UnitPrice = 125.34
                         },
                         new
                         {
                             Id = 2L,
-                            BarcodePrefix = "X2",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5748),
+                            ActionType = 0,
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(2069),
                             ProductId = 2L,
                             Quantity = 10,
                             Type = 0,
                             UnitCost = 12.09,
-                            UnitPrice = 14.09,
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5748)
+                            UnitPrice = 14.09
                         },
                         new
                         {
                             Id = 3L,
-                            BarcodePrefix = "X3",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5751),
+                            ActionType = 0,
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(2071),
                             ProductId = 3L,
                             Quantity = 100,
                             Type = 0,
                             UnitCost = 2.0,
-                            UnitPrice = 4.0,
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5752)
+                            UnitPrice = 4.0
                         },
                         new
                         {
                             Id = 4L,
-                            BarcodePrefix = "X4",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5754),
+                            ActionType = 0,
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(2073),
                             ProductId = 4L,
                             Quantity = 1000,
                             Type = 0,
                             UnitCost = 500.0,
-                            UnitPrice = 600.0,
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5754)
+                            UnitPrice = 600.0
                         },
                         new
                         {
                             Id = 5L,
-                            BarcodePrefix = "X5",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5756),
+                            ActionType = 0,
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(2074),
                             ProductId = 5L,
                             Quantity = 5,
                             Type = 0,
                             UnitCost = 124.0,
-                            UnitPrice = 126.0,
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5757)
+                            UnitPrice = 126.0
                         },
                         new
                         {
                             Id = 6L,
-                            BarcodePrefix = "X11",
-                            CreatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5758),
+                            ActionType = 0,
+                            CreatedDate = new DateTime(2023, 12, 18, 9, 55, 57, 458, DateTimeKind.Local).AddTicks(2075),
                             ProductId = 1L,
                             Quantity = 35,
                             Type = 0,
                             UnitCost = 126.34,
-                            UnitPrice = 128.34,
-                            UpdatedDate = new DateTime(2023, 12, 17, 21, 12, 18, 995, DateTimeKind.Local).AddTicks(5759)
+                            UnitPrice = 128.34
                         });
                 });
 
-            modelBuilder.Entity("PointOfSaleSystem.Models.Stock.StockEntity", b =>
+            modelBuilder.Entity("PointOfSaleSystem.Models.Stock.InvoiceStock", b =>
                 {
-                    b.HasOne("PointOfSaleSystem.Models.Invoice.InvoiceEntity", null)
-                        .WithMany("StockItems")
-                        .HasForeignKey("InvoiceEntityId");
+                    b.HasOne("PointOfSaleSystem.Models.Invoice.Invoice", null)
+                        .WithMany("InvoiceStocks")
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.HasOne("PointOfSaleSystem.Models.Product.ProductEntity", "Product")
+            modelBuilder.Entity("PointOfSaleSystem.Models.Stock.Stock", b =>
+                {
+                    b.HasOne("PointOfSaleSystem.Models.Products.Product", "Item")
                         .WithMany("Stocks")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("Item");
                 });
 
-            modelBuilder.Entity("PointOfSaleSystem.Models.Invoice.InvoiceEntity", b =>
+            modelBuilder.Entity("PointOfSaleSystem.Models.Invoice.Invoice", b =>
                 {
-                    b.Navigation("StockItems");
+                    b.Navigation("InvoiceStocks");
                 });
 
-            modelBuilder.Entity("PointOfSaleSystem.Models.Product.ProductEntity", b =>
+            modelBuilder.Entity("PointOfSaleSystem.Models.Products.Product", b =>
                 {
                     b.Navigation("Stocks");
                 });

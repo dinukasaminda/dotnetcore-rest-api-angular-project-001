@@ -5,4 +5,10 @@
         StockIn,
         StockOut,
     }
+    public enum StockActionType
+    {
+        PurchaseByInvoice,
+        SalesBill,
+        ReturnBill,
+    }
 }

@@ -12,7 +12,7 @@ namespace PointOfSaleSystem.Services.Invoices
     {
         private readonly POSDBContext _context = new();
 
-        public InvoiceEntity CreateInvoice(InvoiceEntity invoice)
+        public Invoice CreateInvoice(Invoice invoice)
         {
 
             _context.Invoices.Add(invoice);
@@ -21,7 +21,7 @@ namespace PointOfSaleSystem.Services.Invoices
             return invoice;
         }
 
-        public InvoiceEntity GetInvoiceById(int id)
+        public Invoice GetInvoiceById(int id)
         { 
              var invoice = _context.Invoices.Where(i => i.Id == id).FirstOrDefault();
             return invoice;

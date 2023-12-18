@@ -14,19 +14,19 @@ namespace PointOfSaleSystem.Services.Stocks
     {
         private readonly POSDBContext _context = new();
 
-        public List<StockEntity> GetAllStocks()
+        public List<Stock> GetAllStocks()
         {
             return _context.Stocks.ToList();
         }
 
 
-        public StockEntity GetStockById(long id)
+        public Stock GetStockById(long id)
         {
             var stock = _context.Stocks.Where(s => s.Id == id).FirstOrDefault();
             return stock;
         }
 
-        public List<StockEntity> GetStocksByProductId(long productId)
+        public List<Stock> GetStocksByProductId(long productId)
         {
             var stocks = _context.Stocks.Where(s => s.ProductId == productId).ToList();
             return stocks;
@@ -84,6 +84,15 @@ namespace PointOfSaleSystem.Services.Stocks
             result.UnitProfit = unitProfit;
 
             return result;
+
+        }
+
+        public List<Stock> AddStock(List<Stock> stockEntitis)
+        {
+            _context.Stocks.AddRange(stockEntitis);
+            _context.SaveChanges();
+
+            return stockEntitis;
 
         }
     }

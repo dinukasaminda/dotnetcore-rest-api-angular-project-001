@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PointOfSaleSystem.Models.Product;
+using PointOfSaleSystem.Models.Products;
 using PointOfSaleSystem.Services.Models;
 using PointOfSaleSystem.Services.Products;
 
@@ -61,7 +61,7 @@ namespace PointOfSaleSystemAPI.Controllers
             {
                 return BadRequest();
             }
-            var productEntity = _mapper.Map<ProductEntity>(product);
+            var productEntity = _mapper.Map<Product>(product);
             var newProduct = _productService.CreateProduct(productEntity);
 
             var mappedProduct = _mapper.Map<ProductDto>(newProduct);

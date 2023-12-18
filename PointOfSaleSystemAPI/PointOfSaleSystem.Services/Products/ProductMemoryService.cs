@@ -1,4 +1,4 @@
-﻿using PointOfSaleSystem.Models.Product;
+﻿using PointOfSaleSystem.Models.Products;
 using PointOfSaleSystem.Services.Models;
 
 namespace PointOfSaleSystem.Services.Products
@@ -6,10 +6,10 @@ namespace PointOfSaleSystem.Services.Products
     public class ProductMemoryService : IProductRepository
     {
         // list all products
-        public List<ProductEntity> AllProduts()
+        public List<Product> AllProduts()
         {
-            var products = new List<ProductEntity>();
-            products.Add(new ProductEntity
+            var products = new List<Product>();
+            products.Add(new Product
             {
                 Id = 1,
                 Name = "product1",
@@ -17,7 +17,7 @@ namespace PointOfSaleSystem.Services.Products
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now
             });
-            products.Add(new ProductEntity
+            products.Add(new Product
             {
                 Id = 2,
                 Name = "product2",
@@ -28,22 +28,22 @@ namespace PointOfSaleSystem.Services.Products
             return products;
         }
 
-        public List<ProductEntity> AllProduts(string? search)
+        public List<Product> AllProduts(string? search)
         {
             throw new NotImplementedException();
         }
 
-        public ProductEntity CreateProduct(CreateProductDto newProduct)
+        public Product CreateProduct(CreateProductDto newProduct)
         {
             throw new NotImplementedException();
         }
 
-        public ProductEntity CreateProduct(ProductEntity newProduct)
+        public Product CreateProduct(Product newProduct)
         {
             throw new NotImplementedException();
         }
 
-        public ProductEntity GetProductById(long id)
+        public Product GetProductById(long id)
         {
             throw new NotImplementedException();
         }

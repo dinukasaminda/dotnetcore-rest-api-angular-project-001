@@ -1,19 +1,19 @@
 ﻿using PointOfSaleDataAccess;
-using PointOfSaleSystem.Models.Product;
+using PointOfSaleSystem.Models.Products;
 
 namespace PointOfSaleSystem.Services.Products
 {
     public class ProductService : IProductRepository
     {
         private readonly POSDBContext _context = new();
-        public List<ProductEntity> AllProduts(string? search)
+        public List<Product> AllProduts(string? search)
         {
             if (string.IsNullOrWhiteSpace(search) ){ 
                return _context.Products.ToList();
             }
             search = search.Trim();
 
-            var productColl = _context.Products as IQueryable<ProductEntity>;
+            var productColl = _context.Products as IQueryable<Product>;
 
           
             productColl = productColl.Where(
@@ -23,7 +23,7 @@ namespace PointOfSaleSystem.Services.Products
             return productColl.ToList();
         }
 
-        public ProductEntity CreateProduct(ProductEntity newProduct)
+        public Product CreateProduct(Product newProduct)
         {
            
             _context.Products.Add(newProduct);
@@ -31,7 +31,7 @@ namespace PointOfSaleSystem.Services.Products
             return newProduct;
         }
 
-        public ProductEntity GetProductById(long id)
+        public Product GetProductById(long id)
         {
             var product = _context.Products.Where(p => p.Id == id).FirstOrDefault();
             return product;
